@@ -1,20 +1,22 @@
-import { Route, Routes } from "react-router-dom";
-import { NavBar } from "./components/Navbar";
-import { HomePage } from "./pages/HomePage";
-import { Posts } from "./pages/Posts";
-import { PostCreate } from "./pages/PostCreate";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import PostList from './components/PostList';
+import PostDetail from './components/PostDetail';
+import CreatePost from './components/CreatePost';
 
-
-function App() {
+const App = () => {
   return (
+    <div>
+      <Navbar />
       <Routes>
-        <Route element={<NavBar />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/create-post" element={<PostCreate />} />
-        </Route>
+        <Route path="/" element={<h1>Inicio</h1>} />
+        <Route path="/posts" element={<PostList posts={[]} />} />
+        <Route path="/post/:postId" element={<PostDetail post={{}} />} />
+        <Route path="/create-post" element={<CreatePost />} />
       </Routes>
+    </div>
   );
-}
+};
 
 export default App;
