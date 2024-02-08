@@ -5,31 +5,29 @@ function CreatePost() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data); // Puedes mantener este console.log para depuración
+    console.log(data); 
   
-    // URL del endpoint de tu json-server para añadir un nuevo post
-    const url = 'http://localhost:3000/posts';
+    const url = 'http://localhost:3000/posts'; 
   
     try {
       const response = await fetch(url, {
-        method: 'POST', // Método HTTP
+        method: 'POST', 
         headers: {
-          'Content-Type': 'application/json', // Indicamos que el cuerpo de la solicitud es JSON
+          'Content-Type': 'application/json', 
         },
-        body: JSON.stringify(data), // Convertimos los datos del formulario a JSON
+        body: JSON.stringify(data), 
       });
   
       if (response.ok) {
         const newPost = await response.json();
         console.log('Post creado con éxito:', newPost);
-        // Aquí puedes redirigir al usuario o mostrar alguna notificación
       } else {
         console.error('Error al crear el post:', response.statusText);
-        // Manejo de errores HTTP (ej., respuesta 404, 500, etc.)
+        // Manejo de errores 
       }
     } catch (error) {
       console.error('Error al intentar comunicarse con el servidor:', error);
-      // Manejo de errores de red o de codificación incorrecta
+      // Manejo de errores 
     }
   };
   
